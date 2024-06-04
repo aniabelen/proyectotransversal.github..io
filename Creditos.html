@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto Transversal EQ</title>
+    <link rel="stylesheet" type="text/css" href="estiloproyecto4.css">
+</head>
+
+<body>
+    <div id="slider">
+        <div class="slide">
+            <img src="aniaa.png" alt="Integrante 1">
+            <div class="info">
+                <h2>Ania Mendoza</h2>
+                <p>Programadora Principal</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="aldeanaa.png" alt="Integrante 2">
+            <div class="info">
+                <h2>Aldo Hernandez</h2>
+                <p>Programador Diseñador</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="calolina.png" alt="Integrante 3">
+            <div class="info">
+                <h2>Carolina Alcala</h2>
+                <p>Programadora Investigadora</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <button class="button" id="nextBtn">Siguiente</button>
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1
+            }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 2000); // Cambia cada 2 segundos
+        }
+
+        document.getElementById("nextBtn").addEventListener("click", function() {
+            slideIndex++;
+            showSlides();
+        });
+    </script>
+    <button class="button"> <a href="Proyecto_Transversal_4APV.html">Regresar</a></button>
+
+    <h2>Fuentes:</h2>
+    <ul>
+        <li><a href="https://es.khanacademy.org/science/biology/ecology">Página sobre ecología</a></li>
+        <li><a href="https://www.un.org/es/climatechange/what-is-renewable-energy">Blog sobre energías renovables</a></li>
+        <li><a href="https://energiatoday.com/asequible-y-no-contaminante/">Recursos sobre energías asequibles</a></li>
+        <li><a href="https://www.gob.mx/cms/uploads/article/main_image/45183/01Nov_DIA_ECO.jpg">Fondo de pantalla</a></li>
+        <li>Etc.</li>
+    </ul>
+</body>

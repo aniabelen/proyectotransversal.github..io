@@ -1,0 +1,17 @@
+(La Carpeta de Recursos esta sin usar ya que va a traer problemas a la hora de vincular archivos cuando se cambie de USB.)
+
+estiloproyecto.css = Inicio (Proyecto_Transversal_4APV.html)
+
+estiloproyecto2.css = Pagina de Programación (Programacion.html)
+
+estiloproyecto3.css = Pagina de Integrantes (Integrantes.html)
+
+estiloproyecto4.css = Pagina de Creditos (Creditos.html)
+
+estiloproyecto5.css = Pagina de Ecologia (Ecologia.html)
+
+estiloproyecto6.css = Pagina de Calculo (Calculo.html)
+
+estiloproyecto7.css = Pagina de Ingles (Ingles.html)
+
+estiloproyecto8.css = Pagina de Fisica (Fisica.html)

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto Transversal EQ</title>
+    <link rel="stylesheet" type="text/css" href="estiloproyecto3.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Contacto e Integrantes</h1>
+    </header>
+
+    <div class="integrantes">
+        <div class="integrante">
+            <img src="aniaa.png" alt="Integrante 1">
+            <h2>Ania Mendoza</h2>
+            <p><strong>Formación:</strong> Estudiante</p>
+            <p><strong>Intereses:</strong> Programación</p>
+            <p><strong>Habilidades:</strong> C#, C++, JavaScript, CSS</p>
+        </div>
+        <div class="integrante">
+            <img src="aldeanaa.png" alt="Integrante 2">
+            <h2>Aldo Hernandez</h2>
+            <p><strong>Formación:</strong> Estudiante</p>
+            <p><strong>Intereses:</strong> Programación</p>
+            <p><strong>Habilidades:</strong> C#, C++, JavaScript, CSS</p>
+        </div>
+        <div class="integrante">
+            <img src="calolina.png" alt="Integrante 3">
+            <h2>Carolina Alcala</h2>
+            <p><strong>Formación:</strong> Estudiante</p>
+            <p><strong>Intereses:</strong> Programación</p>
+            <p><strong>Habilidades:</strong> C#, C++, JavaScript, CSS</p>
+        </div>
+    </div>
+
+    <h2>Formulario de Contacto</h2>
+    <form id="contact-form" class="contact-form">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Mensaje:</label>
+        <textarea id="message" name="message" required></textarea>
+        <button type="submit">Enviar</button>
+        <p id="form-message"></p>
+    </form>
+
+    <div class="weather">
+        <h2>Clima Actual</h2>
+        <p id="weather-data">Cargando clima...</p>
+    </div>
+
+    <button class="button"><a href="Proyecto_Transversal_4APV.html">Regresar</a></button>
+
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const formMessage = document.getElementById('form-message');
+
+            if (name === '' || email === '' || message === '') {
+                formMessage.textContent = 'Todos los campos son obligatorios.';
+                formMessage.style.color = 'red';
+            } else if (!validateEmail(email)) {
+                formMessage.textContent = 'El correo electrónico no es válido.';
+                formMessage.style.color = 'red';
+            } else {
+                formMessage.textContent = 'Mensaje enviado correctamente.';
+                formMessage.style.color = 'green';
+            }
+        });
+
+        function validateEmail(email) {
+            const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            return re.test(email);
+        }
+
+        // Integración con la API de clima
+        const apiKey = 'ba6b13f5567d93664ab8a8c9ebb8498a';
+        const city = 'Tijuana';
+
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=es`)
+            .then(response => response.json())
+            .then(data => {
+                const weatherData = `
+                    <strong>Ciudad:</strong> ${data.name} <br>
+                    <strong>Temperatura:</strong> ${data.main.temp}°C <br>
+                    <strong>Condiciones:</strong> ${data.weather[0].description}
+                `;
+                document.getElementById('weather-data').innerHTML = weatherData;
+            })
+            .catch(error => {
+                document.getElementById('weather-data').textContent = 'No se pudo obtener el clima.';
+                console.error('Error al obtener los datos del clima:', error);
+            });
+    </script>
+</body>
